@@ -5,6 +5,8 @@ import Completed from "./Pages/Completed";
 import Home from "./Pages/Home/Home";
 import Todo from "./Pages/Todo";
 import Navbar from "./Shared/Navbar";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/todo" element={<Todo />} />
         <Route path="/calendar" element={<Calendar />} />
       </Routes>
+
+      <ToastContainer />
     </div>
   );
 }
