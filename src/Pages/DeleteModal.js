@@ -1,6 +1,23 @@
 import React from "react";
+import { toast } from "react-toastify";
 
-const DeleteModal = () => {
+const DeleteModal = ({ deleted, refetch, setDeleted }) => {
+  const { _id } = deleted;
+
+  const handleDelete = () => {
+    fetch(`http://localhost:5000/complete/${_id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount) {
+          refetch();
+          setDeleted(null);
+          toast("delete successful");
+        }
+      });
+  };
+
   return (
     <div>
       <input type="checkbox" id="delete-modal" className="modal-toggle" />
@@ -11,7 +28,9 @@ const DeleteModal = () => {
           </h3>
 
           <div className="modal-action">
-            <button className="btn btn-secondary btn-xs">Delete</button>
+            <label onClick={handleDelete} className="btn btn-secondary btn-xs">
+              Delete
+            </label>
             <label for="delete-modal" className="btn btn-primary btn-xs">
               Not Now
             </label>

@@ -7,6 +7,7 @@ import Todo from "./Pages/Todo/Todo";
 import Navbar from "./Shared/Navbar";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import Footer from "./Shared/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       </Routes>
 
       <ToastContainer />
+      <Footer />
     </div>
   );
 }

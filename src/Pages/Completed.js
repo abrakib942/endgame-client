@@ -37,13 +37,8 @@ const Completed = () => {
                 />
                 <p className="px-3">{complete?.text}</p>
 
-                <label for="delete-modal">
-                  <img
-                    className="cursor-pointer"
-                    setDeleted={complete}
-                    src={del}
-                    alt=""
-                  />
+                <label onClick={() => setDeleted(complete)} for="delete-modal">
+                  <img className="cursor-pointer" src={del} alt="" />
                 </label>
               </div>
             </div>
