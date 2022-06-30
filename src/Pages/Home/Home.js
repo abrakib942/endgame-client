@@ -49,7 +49,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="h-screen">
       <form onSubmit={handleAdd} className="text-center mt-16 px-12">
         <input
           ref={textRef}

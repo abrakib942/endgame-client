@@ -20,7 +20,7 @@ const Completed = () => {
   }
 
   return (
-    <div className="lg:px-16 px-8">
+    <div className="lg:px-16 px-8 h-screen">
       <h2 className="text-center text-2xl font-bold mt-12 text-accent">
         Completed Tasks: {completed?.length}
       </h2>
