@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const Task = ({ task, refetch, setEditTask }) => {
@@ -9,7 +8,7 @@ const Task = ({ task, refetch, setEditTask }) => {
       text,
     };
 
-    fetch("http://localhost:5000/complete", {
+    fetch("https://boiling-escarpment-24505.herokuapp.com/complete", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -24,7 +23,7 @@ const Task = ({ task, refetch, setEditTask }) => {
         }
       });
 
-    fetch(`http://localhost:5000/todo/${_id}`, {
+    fetch(`https://boiling-escarpment-24505.herokuapp.com/todo/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -41,13 +40,13 @@ const Task = ({ task, refetch, setEditTask }) => {
         <input
           onClick={handleComplete}
           type="checkbox"
-          class="checkbox checkbox-accent"
+          className="checkbox checkbox-accent"
         />
       </td>
       <td>{text}</td>
       <td>
         <label
-          for="edit-modal"
+          htmlFor="edit-modal"
           onClick={() => setEditTask(task)}
           className="btn btn-accent btn-xs mr-3"
         >

@@ -12,7 +12,9 @@ const Todo = () => {
     isLoading,
     refetch,
   } = useQuery("tasks", () =>
-    fetch("http://localhost:5000/todo").then((res) => res.json())
+    fetch("https://boiling-escarpment-24505.herokuapp.com/todo").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
@@ -25,8 +27,8 @@ const Todo = () => {
         To-Do Tasks
       </h2>
 
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>completion</th>

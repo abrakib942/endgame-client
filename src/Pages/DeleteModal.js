@@ -5,7 +5,7 @@ const DeleteModal = ({ deleted, refetch, setDeleted }) => {
   const { _id } = deleted;
 
   const handleDelete = () => {
-    fetch(`http://localhost:5000/complete/${_id}`, {
+    fetch(`https://boiling-escarpment-24505.herokuapp.com/complete/${_id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

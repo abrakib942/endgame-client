@@ -13,7 +13,7 @@ const EditModal = ({ editTask, setEditTask, refetch }) => {
       text,
     };
 
-    fetch(`http://localhost:5000/todo/${_id}`, {
+    fetch(`https://boiling-escarpment-24505.herokuapp.com/todo/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -46,7 +46,7 @@ const EditModal = ({ editTask, setEditTask, refetch }) => {
                   ref={textRef}
                   type="text"
                   placeholder="Edit your Task"
-                  class="input input-bordered input-primary w-full max-w-lg mb-3"
+                  className="input input-bordered input-primary w-full max-w-lg mb-3"
                   required
                 />
                 <input
@@ -54,7 +54,10 @@ const EditModal = ({ editTask, setEditTask, refetch }) => {
                   value="Edit"
                   className="btn btn-accent btn-xs ml-1 mr-3"
                 />
-                <label for="edit-modal" className="btn btn-secondary btn-xs">
+                <label
+                  htmlFor="edit-modal"
+                  className="btn btn-secondary btn-xs"
+                >
                   Not Now
                 </label>
               </form>

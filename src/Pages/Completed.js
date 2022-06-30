@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import del from "../assets/delete.png";
-import { toast } from "react-toastify";
 import DeleteModal from "./DeleteModal";
 
 const Completed = () => {
@@ -12,7 +11,9 @@ const Completed = () => {
     isLoading,
     refetch,
   } = useQuery("completed", () =>
-    fetch("http://localhost:5000/complete").then((res) => res.json())
+    fetch("https://boiling-escarpment-24505.herokuapp.com/complete").then(
+      (res) => res.json()
+    )
   );
 
   if (isLoading) {
@@ -28,8 +29,8 @@ const Completed = () => {
       <div className="grid  lg:grid-cols-3 md:grid-cols-2 gap-4">
         {completed?.map((complete) => (
           <>
-            <div class="  card bg-base-100 shadow-xl">
-              <div class=" flex items-center justify-between p-8">
+            <div className="  card bg-base-100 shadow-xl">
+              <div className=" flex items-center justify-between p-8">
                 <input
                   type="checkbox"
                   className="checkbox checkbox-accent"
