@@ -17,7 +17,7 @@ const Completed = () => {
   );
 
   if (isLoading) {
-    <Loading />;
+    return <Loading />;
   }
 
   return (
