@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
+import Loading from "../../Shared/Loading";
+import EditModal from "./EditModal";
+import Task from "./Task";
 
 const Todo = () => {
+  const [editTask, setEditTask] = useState(null);
+
   const {
     data: tasks,
     isLoading,
@@ -9,6 +14,10 @@ const Todo = () => {
   } = useQuery("tasks", () =>
     fetch("http://localhost:5000/todo").then((res) => res.json())
   );
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="lg:px-52">
@@ -22,30 +31,28 @@ const Todo = () => {
             <tr>
               <th>completion</th>
               <th>Tasks</th>
-              <th>Edit/delete</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
-            {tasks.map((task) => (
-              <>
-                <tr>
-                  <td>
-                    <input type="checkbox" class="checkbox checkbox-accent" />
-                  </td>
-                  <td>{task.text}</td>
-                  <td>
-                    <button className="btn btn-primary btn-xs mr-3">
-                      Edit
-                    </button>
-                    <button className="btn btn-secondary btn-xs">Delete</button>
-                  </td>
-                  <td></td>
-                </tr>
-              </>
+            {tasks?.map((task) => (
+              <Task
+                key={task._id}
+                task={task}
+                refetch={refetch}
+                setEditTask={setEditTask}
+              />
             ))}
           </tbody>
         </table>
       </div>
+      {editTask && (
+        <EditModal
+          editTask={editTask}
+          setEditTask={setEditTask}
+          refetch={refetch}
+        ></EditModal>
+      )}
     </div>
   );
 };
